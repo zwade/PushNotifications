@@ -1,5 +1,15 @@
 'use strict';
 
+self.addEventListener('fetch', function(event) {
+        console.log(event)
+	console.log(event.request.url)
+	if (event.request.url == "https://codeaga.me/main.css") {
+		event.respondWith(fetch("https://codeaga.me/main2.css"))
+	} else {
+		event.respondWith(fetch(event.request))
+	}
+})
+
 self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
 
